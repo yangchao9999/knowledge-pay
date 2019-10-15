@@ -1,0 +1,38 @@
+<view class="container">
+  <scroll-view  scroll-y="true"  class="page-body" bindscrolltolower="loadMore">
+    <view class="nav_section">
+        <block wx:for="{{couponList}}" wx:key="item.id">
+            <view class="nav_section_items {{item.validFlag=='0'?'nav_section_items_no':''}}" data-aid="{{item.id}}">
+                <!--image-->
+                <view class="section_image" >
+                    ¥{{item.money}}
+                    <view>
+                      <block wx:if="{{item.doorsill==0}}">
+                        无门槛券
+                      </block>
+                      <block wx:else>
+                        满{{item.doorsill}}可用
+                      </block>
+                    </view>
+                </view>
+                <!--content-->
+                <view class="section_cont" >
+                    <view class="section_cont_sub">
+                        <text>
+                          {{item.remark}}
+                        </text>
+                    </view>                      
+                    <view>有效期至：{{item.validDate}}</view>
+                </view>
+                <view class="section_book " >                         
+                  <view bindtap='useCoupon' data-code='{{item.code}}' data-name='{{item.name}}' data-money='{{item.money}}'><text>立即使用</text></view>                        
+                </view>
+
+            </view>
+            
+        </block>
+            
+  </view>
+
+  </scroll-view>
+</view>

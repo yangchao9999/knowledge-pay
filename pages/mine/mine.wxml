@@ -1,0 +1,24 @@
+<view class="mine-box">
+    <scroll-view>
+        <view class="mine-user">
+            <image class="mine-user-avatar" mode="aspectFill" src="{{userInfo.avatarUrl}}" />
+            <view class="mine-user-name">{{userInfo.nickName}}</view>
+        </view>
+        <view class="mine-order">
+            <view class="mine-order-head" bindtap="goMyOrder">
+                <view class="mine-order-title">我的订单</view>
+                <view class="mine-all-order"></view>
+                <image class="mine-right-arrow" src="../../icons/right_arrow.png"></image>
+            </view>            
+        </view>
+        <view class="mine-cart">
+            <view class="mine-cart-title">优惠券</view>
+            <view class="mine-spacing" bindtap="goMyCoupon" data-count='{{couponCount}}'>{{couponCountStr}}</view>
+            <image class="mine-right-arrow" src="../../icons/right_arrow.png" bindtap="goMyCoupon"></image>
+        </view>
+        <view class="mine-customer-service">
+            <view class="mine-customer-service-title">联系客服</view>
+            <view class="mine-spacing-tel" bindtap='callTelephone' data-tel="****">暂无</view>
+        </view>
+    </scroll-view>
+</view>

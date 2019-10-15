@@ -1,0 +1,7 @@
+<import src="../../components/wxParse/wxParse.wxml"/> 
+<view class="wxParse">
+    <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+</view>
+<view class="footer" wx:if="{{message.navUrl}}">
+  <button type="primary" bindtap='pageLocation'>{{message.navName}}</button>
+</view>

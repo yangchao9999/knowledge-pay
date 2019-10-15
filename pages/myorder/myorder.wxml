@@ -1,0 +1,33 @@
+<block wx:for="{{myOrderList}}" wx:for-item="order">
+  <view class="section-txt">
+    <block wx:if="{{order.payState == '0'}}">
+      <view>
+        <button size='mini' type="primary" bindtap="toPay" 
+          data-orderid='{{order.id}}' data-cid='{{order.goodsId}}' data-tname='{{order.resCourse.teacherName}}'
+          data-cname='{{order.resCourse.courseName}}' data-coursetype='{{order.resCourse.courseType}}' >支付</button>
+      </view>
+    </block>
+    <block wx:if="{{order.payState == '1'}}">
+      <text>支付成功</text> 
+    </block>
+  </view>
+  <view class="nav_section_items" >
+      <!--image-->
+      <view class="section_image" bindtap="navigateDetail">
+        <image src="{{order.resCourse.smallPic}}" mode="aspectFill"></image>
+      </view>
+      <!--content-->
+      <view class="section_cont" bindtap="navigateDetail" data-aid="{{order.goodsId}}">
+        <view class="section_cont_sub">
+          <view class="course_name_text">
+            <text>{{order.body}}</text>
+          </view>
+          <view class="section_book">
+            <text>¥{{order.totalFee}}</text>
+          </view>
+        </view>
+        <view class="section_cont_teaname">订单号：{{order.outTradeNo}}</view>
+        <view class="course_summary">{{order.timeStart}}</view>
+      </view>
+  </view>
+</block>

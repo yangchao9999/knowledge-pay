@@ -1,0 +1,64 @@
+<view class="container">
+  <button type="primary" bindtap="addCoupon" size="mini">添加优惠券</button>
+  <scroll-view  scroll-y="true"  class="page-body" bindscrolltolower="loadMore">
+    <view class="nav_section">
+      <view wx:if="{{count > 0}}">
+          <block wx:for="{{couponList}}" wx:key="item.id">
+              <view class="nav_section_items {{item.validFlag=='0'?'nav_section_items_no':''}}" data-aid="{{item.id}}">
+                  <!--image-->
+                  <view class="section_image" >
+                      ¥{{item.money}}
+                      <view>
+                        <block wx:if="{{item.doorsill==0}}">
+                          无门槛券
+                        </block>
+                        <block wx:else>
+                          满{{item.doorsill}}可用
+                        </block>
+                      </view>
+                  </view>
+                  <!--content-->
+                  <view class="section_cont" >
+                      <view class="section_cont_sub">
+                          <text>
+                            {{item.remark}}
+                          </text>
+                      </view>                      
+                      <view>有效期至：{{item.validDate}}</view>
+                  </view>
+                  <!--book-->
+                  <block wx:if="{{item.validFlag=='0'}}">
+                    <view class="section_book_false " >
+                      <view><text>已过期</text></view>
+                    </view>
+                  </block>
+                  <block wx:else>
+                    <block wx:if="{{item.useState=='0'}}"> 
+                      <view class="section_book " >                         
+                        <view bindtap='goIndex'><text>立即使用</text></view>                        
+                      </view>
+                    </block>
+                    <block wx:else>
+                      <view class="section_book_false" >
+                        <view><text>已使用</text></view>
+                      </view>
+                    </block>
+                  </block>
+
+              </view>
+              
+          </block>
+      </view>
+      
+      <view wx:if="{{count == 0}}" class='notFoundView'>
+          暂无优惠券,快去添加吧！
+      </view>
+            
+  </view>
+
+  </scroll-view>
+</view>
+
+<modal hidden="{{hiddenmodalput}}" title="添加优惠券" confirm-text="添加" cancel-text="取消" bindcancel="cancel" bindconfirm="saveCoupon">
+  <input bindinput='bindInputCouponCode' type='text' placeholder="请输入优惠券号码..." auto-focus value="{{couponCode}}"/>
+</modal>

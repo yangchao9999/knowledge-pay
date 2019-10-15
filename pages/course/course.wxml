@@ -1,0 +1,143 @@
+<import src="../../components/wxParse/wxParse.wxml"/> 
+<view class="container2">
+<view class="ar_coverpath">
+  <view class="player" style="{{courseType=='audio'?'':'display:none;'}}">
+    <view class="audio">
+      <view class="video-detail">
+        <image src="{{course.smallPic}}" mode="aspectFill" class="smallpic" ></image>
+        <!--<audio id="audio" src="{{currChapter.url}}" action="{{action}}" binderror="errorEvent" bindtimeupdate="timeupdateEvent" bindended="endEvent"></audio>-->
+      </view>
+    </view>
+    <view class="progress">
+      <text>{{timeText}}</text>
+      <!--<progress percent="30" color="red" stroke-width="4"/>-->
+      <slider bindchange="sliderchange" bindchanging="bindchanging" min="{{min}}" max="{{max}}" value="{{per}}"
+        disabled="{{disabled}}" activeColor='{{colorSelect}}' backgroundColor='{{backgroundColor}}' 
+        block-size='{{blockSize}}' block-color='{{blockColor}}' step="{{step}}" show-value='{{showValue}}' />
+      <text>{{currChapter.hourView}}</text>
+    </view>
+  	<view class="controls">
+  		<image mode="scaleToFill" bindtap="prevEvent" src="../../icons/music/prev.png" />
+  		<image mode="scaleToFill" bindtap="actionEvent" src="../../icons/music/{{status === 'play' ? 'pause' : 'play'}}.png" />
+  		<image mode="scaleToFill" bindtap="nextEvent" src="../../icons/music/next.png" />
+  	</view>
+  </view>
+
+  <view class="player" style="{{courseType=='video'?'':'display:none;'}}">
+    <view class="video">
+      <video id="myVideo" src="{{currChapter.url}}" autoplay="{{videoAutoplay}}" controls="true" poster="{{course.smallPic}}"
+        binderror="videoErrorCallback" bindended="videoBindended" bindplay="videoBindplay" bindpause="videoBindpause"></video>
+    </view>
+  </view>
+
+  <view class="player" style="{{courseType=='text'?'':'display:none;'}}">
+    <view class="audio">
+      <view class="video-detail">
+        <image src="{{course.smallPic}}" mode="aspectFill" class="smallpic" ></image>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="ar_cont">
+    <view class="ar_cont_h1_view">
+      <text class="ar_cont_h1">{{currChapter.courseName}}</text>
+    </view>
+    <view class="ar_cont_share">
+      <image class="playico" mode="scaleToFill" bindtap="favEvent" src="../../icons/playico.png" />
+      <text>{{currChapter.chapterPlayCount}}次 · {{currChapter.hourView}}</text>
+      <button class='fav' id="shareBtn" open-type="share" plain="true">
+        <image class="favImg" mode="scaleToFill" src="../../icons/share.png" open-type="share"/>
+      </button>
+    </view>
+    <view>
+      <scroll-view scroll-x="true" class="chapter-scoll-x" >
+        <block wx:for="{{course.chapterList}}" wx:key="*this" wx:for-item="chapterItem">
+          <view class="chapter-item {{currChapter.id==chapterItem.id?'chapter-item-sel':''}}" bindtap="chapterPlay"
+            wx:if="{{chapterItem.url != null && chapterItem.url != ''}}" 
+            data-chapterid="{{chapterItem.id}}" data-chapterurl="{{chapterItem.url}}">
+            {{chapterItem.chapterNum}}
+          </view>
+        </block>
+      </scroll-view>
+    </view>
+    <scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
+      <view class="tab-item {{currentTab==0?'active':''}}"  data-current="0" bindtap="swichNav">简介</view>
+      <view class="tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="swichNav">目录</view>
+    </scroll-view>
+    <view>
+    <view class="swiper-item" style="{{currentTab==0?'':'display:none'}}">
+      <view class="wxParse">
+          <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+      </view>
+    </view>
+    <view class="swiper-item" style="{{currentTab==1?'':'display:none'}}">
+      <block wx:for="{{course.chapterList}}" wx:key="*this" wx:for-item="chapterItem">
+        <view>
+          <text>{{chapterItem.courseName}}</text>
+          <text style="float:right;margin-right:10rpx;">{{chapterItem.hourView}}</text>          
+        </view>
+      </block>
+    </view>
+    </view>
+</view>
+<view class="modal-box" hidden="{{payModalFlag}}" >
+  <view class="modal-body">
+    <view class="modal-content">
+      <view class="goods_title">订单确认
+        <button class='closeImgBtn' bindtap="payModalHide" plain="true" style="margin-right:25rpx;">
+          <image class="closeImg" mode="scaleToFill" src="../../icons/icon_close.png"/>
+        </button>
+      </view>
+      
+      <view class="goods_info">商品名称<text>{{course.teacherName}} · {{course.courseName}}</text></view>
+      <view class="goods_info">优惠券
+        <block wx:if="{{course.recommendCoupon}}">
+            <text bindtap="getCourseCoupon">{{conoupText}} ></text>
+        </block>
+        <block wx:else><text>暂无优惠券!</text></block>  
+      </view>
+      <view class="goods_info goods_info_red goods_info_bold">订单金额<text>¥ {{course.price}}</text></view>
+      <view class="goods_info">优惠金额<text>¥ {{conoupMoney}}</text></view>
+      <view class="goods_info goods_info_red goods_info_pri">支付金额<text>¥ {{(coursePrice - conoupMoney)>0?(coursePrice - conoupMoney):0 }}</text></view>
+      <view class="payProtocol">
+        <checkbox-group bindchange="checkboxChange">
+            <checkbox value="1" checked="{{payProtocol}}" style="float:left;" />            
+        </checkbox-group>
+        <view style="float:left;">
+          我已阅读并同意签订
+        
+        </view>
+        <view style='float:left;' bindtap='toPayProtocol' data-type='1'>
+          《用户服务协议》
+        </view>
+        <view bindtap='toPayProtocol' data-type='2' style="float:left;">
+          《免责声明》
+        </view>
+      </view>
+      <button class="toPayBtn mini" bindtap="toPay" wx:if="{{payProtocolSel.length > 0}}">去支付</button>
+      <button class="toPayBtn mini" disabled='disabled' wx:if="{{payProtocolSel.length <= 0}}">去支付</button>
+    </view>
+  </view>
+</view>
+<view class="modal-box-2" hidden="{{topModalFlag}}">
+  <view class="modal-body">
+    <view style="margin-right: 20rpx;margin-top: 20rpx;">
+      <button class='closeImgBtn' bindtap="modalClose2" plain="true" >
+        <image class="closeImg" mode="scaleToFill" src="../../icons/icon_close.png"/>
+      </button>
+    </view>
+    <view class="modal-content-2">
+      <view class="modal-tips">购买课程即可观看视频</view>
+      <button size="mini" bindtap="modalClose2" style="margin-top:15rpx;margin-right:15rpx;">取消</button>
+      <button size="mini" type='primary' bindtap="prePay" style="margin-top:15rpx;">立即购买</button>      
+    </view>
+  </view>
+</view>
+<block wx:if="{{course.buyFlag=='0'}}">
+  <button class="ar_book footer" bindtap="prePay">立即购买</button>
+</block>
+  <!-- 
+  <button bindtap="testBtn" hover-class="other-button-hover"> testBtn pay </button>
+  <button bindtap="testAudioPlayBtn" hover-class="other-button-hover"> testBtn audio play </button>-->
+
+</view>

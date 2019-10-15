@@ -1,0 +1,120 @@
+page{
+  background-color: #f6f6f6;
+}
+.section-txt{
+  font-weight:bold;
+  line-height: 80rpx;
+  background-color: #fff;
+  margin-right: 15rpx;
+}
+.section-txt button{
+  margin-right: 15rpx;
+  margin-top: 7rpx;
+}
+.nav_section_items{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding:30rpx;
+    position: relative;
+    background-color: #fff;
+    margin-bottom: 16rpx;
+}
+.nav_section_items:active{
+    background:#ddd;
+}
+.nav_section_items .section_image{
+    width:160rpx;
+    height:190rpx;    
+}
+.nav_section_items .section_image image{
+    width:100%;
+    height:100%;
+    border-radius:15rpx;
+}
+.nav_section_items .section_cont{
+    width:500rpx;
+    font-size:26rpx;
+    color:#a9a9a9;
+    
+}
+/**
+.nav_section_items .section_cont view{
+    overflow:hidden;
+    text-overflow: ellipsis;
+    white-space:nowrap;
+    display: block;
+    font-size:24rpx;
+}**/
+.course_summary{
+  overflow:hidden;
+  text-overflow: ellipsis;
+  white-space:nowrap;
+  display: block;
+  font-size:30rpx;
+  float: left;
+}
+.nav_section_items .section_cont .section_cont_intro{
+    white-space:normal;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.nav_section_items .section_cont .section_cont_sub{
+    font-size: 32rpx;
+    line-height:60rpx;
+    color:#000;
+}
+.course_name_text{
+  font-size: 32rpx;
+  line-height:70rpx;
+  width: 400rpx;
+  float:left;
+  overflow:hidden;
+  text-overflow: ellipsis;
+  white-space:nowrap;
+  display: block;
+  font-weight: bold;
+}
+.nav_section_items .section_cont .section_cont_teaname{
+    font-size:30rpx;
+    color:#5b5b5b;
+    margin-bottom:20rpx;
+    padding-top: 10rpx;float: left;
+}
+.nav_section_items .section_book{
+    width:80rpx;
+    height:80rpx;
+    font-size:26rpx;
+    line-height: 80rpx;
+    color:#fe5a3f;
+    text-align: center;   
+    float:right; 
+    margin-top: 0rpx;
+}
+
+.section_buy_count_view{
+  margin-top: 10rpx;
+  float:right;
+}
+
+.section-item{
+  border-bottom:2rpx solid #ddd;
+  padding-bottom:25rpx;
+}
+
+.section-txt{
+  line-height: 70rpx;
+  text-align: right;
+}
+
+.section-txt view{
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-bottom: 2rpx solid #ddd;
+}
+
+.section-txt button{
+  float:right;
+}

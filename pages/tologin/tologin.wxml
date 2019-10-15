@@ -1,0 +1,8 @@
+<view class="image-div">
+  <image src='../../icons/logo.png' class="logo"></image>
+  <view class="auth-txt">
+    <text>授权登录后应用将可获得您的昵称、头像等信息</text>
+  </view>
+  <button class='btn_yzm' type="primary" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" loading="{{loading}}" plain="{{plain}}"
+          disabled="{{disabled}}" bindtap="primary"> 授权登录 </button>
+</view>

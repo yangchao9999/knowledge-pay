@@ -1,0 +1,42 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/tologin/tologin",
+    "pages/myorder/myorder",
+    "pages/course/course",
+    "pages/logs/logs",
+    "pages/mine/mine",
+    "pages/message/message",
+    "pages/mycoupon/mycoupon",
+    "pages/payProtocol/payProtocol",
+    "pages/payCoupon/payCoupon"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "晨智",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#5f616c",
+    "selectedColor": "#0da361",
+    "backgroundColor": "#fff",
+    "borderStyle": "white",
+    "position": "bottom",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "./icons/home.png",
+        "selectedIconPath": "./icons/homeSelected.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "./icons/mine.png",
+        "selectedIconPath": "./icons/mineSelected.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

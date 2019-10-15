@@ -1,0 +1,155 @@
+/**index.wxss**/
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.usermotto {
+  margin-top: 200px;
+}
+
+.swiper {
+  height: 400rpx;
+  width: 100%;
+}
+
+.swiper-image {
+  height: 100%;
+  width: 100%;
+}
+.slide-image{
+   height: 100%;
+  width: 100%;
+}
+
+/* 导航对应内容项 */
+.nav_section{
+    width:100%;
+}
+.nav_section_items{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding:30rpx;
+    position: relative;
+}
+.nav_section_items:active{
+    background:#ddd;
+}
+.nav_section_items .section_image{
+    width:160rpx;
+    height:190rpx;    
+}
+.nav_section_items .section_image image{
+    width:100%;
+    height:100%;
+    border-radius:15rpx;
+}
+.nav_section_items .section_cont{
+    width:500rpx;
+    font-size:26rpx;
+    color:#a9a9a9;
+    
+}
+/**
+.nav_section_items .section_cont view{
+    overflow:hidden;
+    text-overflow: ellipsis;
+    white-space:nowrap;
+    display: block;
+    font-size:24rpx;
+}**/
+.course_summary{
+  overflow:hidden;
+  text-overflow: ellipsis;
+  white-space:nowrap;
+  display: block;
+  font-size:24rpx;
+}
+.nav_section_items .section_cont .section_cont_intro{
+    white-space:normal;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.nav_section_items .section_cont .section_cont_sub{
+    font-size: 32rpx;
+    line-height:60rpx;
+    color:#000;
+}
+.course_name_text{
+  font-size: 32rpx;
+  line-height:60rpx;
+  width: 400rpx;
+  float:left;
+  overflow:hidden;
+  text-overflow: ellipsis;
+  white-space:nowrap;
+  display: block;
+}
+.nav_section_items .section_cont .section_cont_teaname{
+    font-size:30rpx;
+    color:#5b5b5b;
+    margin-bottom:10rpx;
+}
+.nav_section_items .section_book{
+    width:80rpx;
+    height:80rpx;
+    font-size:26rpx;
+    line-height: 80rpx;
+    color:#fe5a3f;
+    text-align: center;   
+    float:right; 
+    margin-top: -5rpx;
+}
+
+.section_buy_count_view{
+  margin-top: 10rpx;
+  float:right;
+}
+
+.section-item{
+  border-bottom:2rpx solid #ddd;
+  padding-bottom:20rpx;
+}
+
+.section-txt{
+  margin: 15rpx 15rpx 10rpx 25rpx;
+  font-weight:bold;
+  line-height: 80rpx;
+}
+
+.modal-box{
+  position:fixed;
+  width:100%;
+  height:100%;
+  top:0px;
+  background:rgba(0,0,0,0.4);
+  overflow: hidden;
+  z-index:99999;  
+}
+
+.modal-body{
+  position:relative;
+  
+}
+
+.modal-content{
+  /* width: 60%; */
+  position: fixed;
+ 	bottom: 0;
+  overflow: hidden;
+  background-color:#fff;
+}

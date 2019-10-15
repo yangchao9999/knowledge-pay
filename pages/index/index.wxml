@@ -1,0 +1,46 @@
+<swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" current="{{swiperCurrent}}" bindchange="swiperChange" indicator-color="white"  indicator-active-color="coral" bindanimationfinish="changeGoodsSwip">
+  <block wx:for="{{messageList}}">
+    <navigator url="../message/message?id={{item.id}}">   
+      <swiper-item>          
+        <image src="{{item.smallpic}}" class="slide-image" bindtap="swipclick" />        
+      </swiper-item>
+    </navigator>
+  </block> 
+</swiper>
+<scroll-view class="section-scroll" scroll-x>
+    <view wx:key="{{item.id}}" class="section-item" wx:for="{{sectionList}}">
+        <view class="section-txt"> 
+          <text>{{item.sectionName}}</text>   
+        </view> 
+        <view class="nav_section_items" wx:for="{{item.courseList}}" wx:key="{{course.id}}" 
+          data-id="{{course.id}}" data-cname="{{course.courseName}}" data-tname="{{course.teacherName}}" data-coursetype="{{course.courseType}}"
+          wx:for-item="course" bindtap="navigateCourseDetail">
+          <!--image-->
+          <view class="section_image" bindtap="navigateDetail" data-aid="{{course.id}}">
+            <image src="{{course.smallPic}}" mode="aspectFill"></image>
+          </view>
+          <!--content-->
+          <view class="section_cont" bindtap="navigateDetail" data-aid="{{course.id}}">
+              <view class="section_cont_sub">
+                  <view class="course_name_text">
+                    <text>{{course.courseName}}</text>
+                  </view>
+                  <view class="section_book">
+                    <block wx:if="{{course.price=='0' || course.price=='0.0' || course.price=='0.00'}}">
+                        <text>免费</text>
+                    </block>
+                    <block wx:else>
+                        <text>¥{{course.price}}</text>
+                    </block>
+                  </view>
+              </view>
+              <view class="section_cont_teaname">{{course.teacherName}}</view>
+              <view class="course_summary">{{course.summary}}</view>
+              <view class="section_buy_count_view">{{course.courseBuyCount}}人已加入学习</view>
+          </view>
+          <!--book-->
+          
+      </view>
+    </view>
+    
+</scroll-view>

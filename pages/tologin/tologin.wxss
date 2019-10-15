@@ -1,0 +1,20 @@
+.image-div{
+  text-align: center;
+}
+
+.logo{
+  width:255rpx;
+  height:255rpx; 
+  margin-top: 150rpx;
+  margin-bottom: 30rpx;
+}
+
+.auth-txt{
+  font-size:30rpx;
+  line-height: 80rpx;
+  color:#fe5a3f;
+}
+
+.btn_yzm{
+  width:85%;
+}
