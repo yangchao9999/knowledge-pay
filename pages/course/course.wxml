@@ -89,6 +89,7 @@
         </button>
       </view>
       
+      
       <view class="goods_info">商品名称<text>{{course.teacherName}} · {{course.courseName}}</text></view>
       <view class="goods_info">优惠券
         <block wx:if="{{course.recommendCoupon}}">
